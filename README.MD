@@ -1,4 +1,4 @@
-#Brainf*ck Docs
+# Brainf*ck Docs
 Brainf*ck文档
 
 _P.S. I'm not very good at English, and some content
@@ -6,7 +6,7 @@ is translated by machine,please ignore the grammar
 mistake. If you have advice for translation, please
 open an issue with tag "translate advice"_
 
-##function tree
+## function tree
 功能树
 ```
 brainfuck.py
@@ -27,10 +27,10 @@ brainfuck.py
 |-function ook_to_bf(code)
 \-function hello_world()
 ```
-##Docs
+## Docs
 文档
 
-###[class] BF(builtins.object)
+### [class] BF(builtins.object)
 ```
 class BF(builtins.object)
  |  BF(io='char')
@@ -117,7 +117,7 @@ class BF(builtins.object)
  |      重置编译器的内存
  |  
 ```
-###[function] visible_debug()
+### [function] visible_debug()
 ```
 visible_debug(code, sleep=0.3, on=None, bf=None, warn=True)
     Extending function BF.debug
@@ -129,19 +129,19 @@ visible_debug(code, sleep=0.3, on=None, bf=None, warn=True)
     [sleep] 每一步的休眠时间(<0意味着人工控制)
     [bf] 使用自定义编译器(None代表新建一个)
 ```
-###[function] bf()
+### [function] bf()
 ```
 bf(code, io='char')
     A fast way to call Brainf*ck compiler
     一个用于快速调用Brainf*ck编译器的函数
 ```
-###[function] ook_to_bf()
+### [function] ook_to_bf()
 ```
 ook_to_bf(code)
     A function turn Ook! to Brainf*ck
     一个将Ook!转为Brainf*ck的函数
 ```
-###[function] hello_world()
+### [function] hello_world()
 ```
 hello_world()
     A hello world demo
