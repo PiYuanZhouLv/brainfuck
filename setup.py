@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     packages=['brainfuck'],
     url='https://github.com/PiYuanZhouLv/brainfuck/',
-    license='MIT License',
+    license='',
     author='PiYuanZhouLv',
     author_email='18379028718@139.com',
     description='A Brainf*ck compiler in Python'
