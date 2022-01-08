@@ -243,10 +243,10 @@ io: 'char'、'int'或 类似CharIO、IntIO的class 输入、输出类型或类
         """ (Use help for more info.使用help获取更多信息)
 Execute the code with the compiler.
 code: The code that are executed.
-warn: A Boolen. The compiler will send you a warnning if you don't reset it
+warn: A Boolen. The compiler will send you a warning if you don't reset it
       before you call it to run another code when the value is True.
       For some case like executing a code part by part, set this value False
-      to prevent the compiler raising a Warnning.
+      to prevent the compiler raising a Warning.
 执行代码
 code: 要执行的代码
 warn: 一个布尔值。当值为True时，如果在调用它运行另一个代码之前未重置它，
@@ -587,7 +587,7 @@ def ook_to_bf(code):
                         bfcode.append(']')
                     elif c == '?':
                         raise SyntaxError(
-                            "Unknow syntax:'??' at line %s column %s and line %s column %s\n"
+                            "Unknown syntax:'??' at line %s column %s and line %s column %s\n"
                             "语法错误：未知的语法“??”在第%s列第%s行和第%s列第%s行" % (line1, column1, line2, column2,
                                                                   line1, column1, line2, column2))
                 elif letter1 == '!':
