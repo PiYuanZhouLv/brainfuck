@@ -6,6 +6,7 @@ is translated by machine,please ignore the grammar
 mistake. If you have advice for translation, please
 open an issue with tag "translate advice"_
 
+
 ## Why this?
 为什么用这个?
 
@@ -98,7 +99,6 @@ Ook!语法
 | Ook! Ook. |     ! .      |     .     |
 | Ook! Ook? |     ! ?      |     [     |
 | Ook? Ook! |     ? !      |     ]     |
-
 
 ## function tree
 功能树
