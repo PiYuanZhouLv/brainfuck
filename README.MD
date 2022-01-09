@@ -1,10 +1,104 @@
 # Brainf*ck Docs
 Brainf*ck文档
 
-_P.S. I'm not very good at English, and some content
+> _P.S. I'm not very good at English, and some content
 is translated by machine,please ignore the grammar
 mistake. If you have advice for translation, please
 open an issue with tag "translate advice"_
+
+## Why this?
+为什么用这个?
+
+This version of Brainf*ck has many advantages:
+1. Support for basic Brainf*uck syntax
+2. Have a non-static memory system
+3. Have some enhancement syntax(TODO)
+4. Have a debug method and a debugger
+5. ... ...
+
+这个版本的Brainf*ck有很多优点:
+1. 支持基础Brainf*ck语法
+2. 有非静态内存系统
+3. 有增强语法(TODO)
+4. 有调试模式以及一个调试器
+5. 中文文档，对中国程序员相当友好
+6. ... ...
+
+## Brainf*ck syntax
+Brainf*ck语法
+### Basic Syntax
+基础语法
+
+| Char |                                 Meaning                                 |
+|:----:|:-----------------------------------------------------------------------:|
+|  \>  |                         Increment the pointer.                          |
+|  <   |                         Decrement the pointer.                          |
+|  +   |                   Increment the byte at the pointer.                    |
+|  -   |                   Decrement the byte at the pointer.                    |
+|  .   |                     Output the byte at the pointer.                     |
+|  ,   |          Input a byte and store it in the byte at the pointer.          |
+|  [   |  Jump forward past the matching ] if the byte at the pointer is zero.   |
+|  ]   | Jump backward to the matching [ unless the byte at the pointer is zero. |
+
+For more information, see [Wikipedia - Brainfuck] https://en.wikipedia.org/wiki/Brainfuck
+
+| 字符  |               含义                |
+|:---:|:-------------------------------:|
+| \>  |              指针加一               |
+|  <  |              指针减一               |
+|  +  |           指针指向的字节的值加一           |
+|  -  |           指针指向的字节的值减一           |
+|  .  |           输出指针指向的单元内容           |
+|  ,  |          输入内容到指针指向的单元           |
+|  [  | 如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处  |
+|  ]  | 如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处 |
+
+更多见[百度百科-Brainfuck]https://baike.baidu.com/item/Brainfuck/1152785?fr=aladdin
+### Enhancement Syntax _(TODO)_
+增强语法 _(TODO)_
+
+|   Char    |                        Meaning                        |
+|:---------:|:-----------------------------------------------------:|
+|     ^     |             Jump out of the loop.(break)              |
+|     v     |      Return to the start of the loop.(continue)       |
+|  (?A:B)   |     Do A if the current value isn't 0, else do B.     |
+|  &#124;   |  Insert a cell after current and move pointer to it.  |
+|     x     | Delete current cell and move pointer to the left one. |
+|   (.A)    |                 Output the char "A".                  |
+|   (,A)    |           Make current cell value be int A.           |
+|  ($A:B)   |     Define a function called "A", with process B.     |
+|   (@A)    |                   Call function "A"                   |
+|     !     |          Breakpoint(enable at debug methods)          |
+| +(-/>/<)A |               Execute +(-/>/<) A times.               |
+
+|    字符     |         含义         |
+|:---------:|:------------------:|
+|     ^     |    退出循环(break)     |
+|     v     |   重返循环(continue)   |
+|  (?A:B)   | 如果当前值不为0，执行A，否则执行B |
+|  &#124;   | 在当前格后插入一格，并移至新插入的格 |
+|     x     |    删除当前格，并移至左侧格    |
+|   (.A)    |      输出字符“A”       |
+|   (,A)    |   给当前格赋值为A(int值)   |
+|  ($A:B)   |   将过程B定义为名叫A的函数    |
+|   (@A)    |       调用函数A        |
+|     !     |    断点(在调试模式启用)     |
+| +(-/>/<)A |  执行 +(-/>/<) A 次.  |
+
+### Ook! Syntax
+Ook!语法
+
+|   Ook!    | (Short) Ook! | Brainf*ck |
+|:---------:|:------------:|:---------:|
+| Ook. Ook? |     . ?      |     >     |
+| Ook? Ook. |     ? .      |     <     |
+| Ook. Ook. |     . .      |     +     |
+| Ook! Ook! |     ! !      |     -     |
+| Ook. Ook! |     . !      |     ,     |
+| Ook! Ook. |     ! .      |     .     |
+| Ook! Ook? |     ! ?      |     [     |
+| Ook? Ook! |     ? !      |     ]     |
+
 
 ## function tree
 功能树
@@ -26,6 +120,9 @@ brainfuck.py
 |-function bf(code, io)
 |-function ook_to_bf(code)
 \-function hello_world()
+
+e_brainfuck.py
+\- TODO ... ...
 ```
 ## Docs
 文档
@@ -34,8 +131,8 @@ brainfuck.py
 ```
 class BF(builtins.object)
  |  BF(io='char')
- |  
- |  Init a Brainf*ck Compiler (Use help for more info.使用help获取更多信息)
+ |  __init__(self, io='char')
+ |  Init a Brainf*ck Compiler
  |  io: 'char', 'int' or a class like CharIO or IntIO. The input and output type or class
  |      'char': Your input will be read one character at a time,
  |              converted to "int" for operation, and reverted to a character
@@ -82,14 +179,9 @@ class BF(builtins.object)
  |              当BF.reset被调用时，将会调用reset函数来刷新输入列表(即cache)。
  |              具体效果取决于自定义的这个类，定义可参照本模块中的"CharIO","IntIO"类
  |  
- |  Methods defined here:
- |  
- |  __init__(self, io='char')
- |  
  |  debug(self, code, on=None, warn=True)
  |      A method like BF.execute but return an iterable object about memory and seek on each step.
  |      一个类似于BF.execute的函数，但会返回每一步的内存和指针情况。
- |      (Use help() for more information 使用help()获取更多信息)
  |      [code, warn] The same as BF.execute
  |      [on] Stop on which chars. For example, use "on=['[', '!']"
  |           to stop on the starts of all loops("[") and custom breakpoint("!").
@@ -99,7 +191,6 @@ class BF(builtins.object)
  |           (None等同于调用"on = ['+', '-', '>', '<', ',']")
  |  
  |  execute(self, code, warn=True)
- |      (Use help for more info.使用help获取更多信息)
  |      Execute the code with the compiler.
  |      code: The code that are executed.
  |      warn: A Boolen. The compiler will send you a warnning if you don't reset it
