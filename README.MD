@@ -41,7 +41,7 @@ Brainf*ck语法
 |  [   |  Jump forward past the matching ] if the byte at the pointer is zero.   |
 |  ]   | Jump backward to the matching [ unless the byte at the pointer is zero. |
 
-For more information, see [Wikipedia - Brainfuck] https://en.wikipedia.org/wiki/Brainfuck
+> For more information, see [Wikipedia - Brainfuck] https://en.wikipedia.org/wiki/Brainfuck
 
 | 字符  |               含义                |
 |:---:|:-------------------------------:|
@@ -54,7 +54,7 @@ For more information, see [Wikipedia - Brainfuck] https://en.wikipedia.org/wiki/
 |  [  | 如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处  |
 |  ]  | 如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处 |
 
-更多见[百度百科-Brainfuck]https://baike.baidu.com/item/Brainfuck/1152785?fr=aladdin
+> 更多见[百度百科-Brainfuck]https://baike.baidu.com/item/Brainfuck/1152785?fr=aladdin
 ### Enhancement Syntax _(TODO)_
 增强语法 _(TODO)_
 
@@ -99,6 +99,14 @@ Ook!语法
 | Ook! Ook. |     ! .      |     .     |
 | Ook! Ook? |     ! ?      |     [     |
 | Ook? Ook! |     ? !      |     ]     |
+
+## Usage: Install and import
+### Install
+Enter the folder which setup.py are placed, then call `setup.py install` to install the package.
+### Import
+Just Use `from brainfuck import *`
+> NOTE: You needn't use `from brainfuck import brainfuck` or `from brainfuck import e_brainfuck` 
+> because they are imported in `__init__.py`.
 
 ## function tree
 功能树
